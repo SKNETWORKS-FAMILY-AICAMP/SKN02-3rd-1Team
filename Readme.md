@@ -15,7 +15,7 @@ python은 3.10 버전으로 가상환경을 구축였으며 다음은 사용한 
 !pip install chromadb openai langchain
 !pip install langchainhub tiktoken langchain-community
 !pip install pyaudio pypdf wave
-!pip install streamlit
+!pip install streamlit python-dotenv
 ```
 ```python
 streamlit run app.py
