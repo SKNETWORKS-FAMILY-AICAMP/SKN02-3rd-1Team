@@ -35,7 +35,7 @@
 [4] 타자치기 어려운 상황에서 사용이 용이하도록 음성인식 기능을 추가하였다. pyaudio 객체를 생성한 뒤, ‘whisper-1’모델을 사용하여 음성을 텍스트로 전환한다
 
 [5] 수집된 데이터
-<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/data_struct.png">
+<img src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/data_struct.png">
 응급 상황명, 원인, 증상, 처치방법이 수집되었다. 이중 동일한 응급상황에 대한 중복데이터가 있는 경우, 챗봇 응답에 필요하지 않은 주석, 링크와 같은 데이터를 제거한 상태임을 확인할 수 있다.
 
 ### 2) 모델
