@@ -12,7 +12,7 @@
 ## 구현을 위한 환경 세팅
 python은 3.10 버전으로 가상환경을 구축였으며 다음은 사용한 모듈을 설치하는 코드이다.
 ```python
-!pip install chromadb openai langchain
+!pip install chromadb openai langchain fpdf2
 !pip install langchainhub tiktoken langchain-community
 !pip install pyaudio pypdf wave
 !pip install streamlit python-dotenv
