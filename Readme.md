@@ -1,6 +1,5 @@
 # GPT 활용 응급처치 챗봇
-
-<a href="https://fragrant-paprika-e91.notion.site/gpt-8aa9494a44724d40bded8185869bc5ff">노션페이지</a>
+[<img src="https://img.shields.io/badge/notion-00AA55?style=for-the-badge&logo=notion&logoColor=white"/>](https://fragrant-paprika-e91.notion.site/gpt-8aa9494a44724d40bded8185869bc5ff)
 
 ## 팀원 소개
 |강민호|김서연|김진유|박경희|
