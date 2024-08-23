@@ -5,9 +5,9 @@ from langchain.prompts import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from dotenv import load_dotenv
 import os
-from st_utils import *
-from rag_utils import *
-from stt import *
+from utils.st_utils import *
+from utils.rag_utils import *
+from utils.stt import *
 
 
 # API 키 정보 로드
