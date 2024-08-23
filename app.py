@@ -10,30 +10,19 @@ import time
 import pyaudio
 import wave
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
 
+# API 키 정보 로드
+load_dotenv()
+DB_PATH = os.getenv("DB_PATH")
+# 디스크에서 문서를 로드합니다.
+vectorstore = Chroma(
+    persist_directory= DB_PATH,
+    embedding_function=OpenAIEmbeddings(),
+    collection_name="my_db",
+)
 
-
-
-@st.cache_data
-def load_pdf():
-    # PDF 정보 가져오기
-    loader = PyPDFLoader("./data/safekorea_crawling_result.pdf")
-    pages = loader.load_and_split()
-    loader = PyPDFLoader("./data/응급상황및손상.pdf")
-    pages2 = loader.load_and_split()
-    pages = pages + pages2
-    pages = loader.load_and_split()
-
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500, chunk_overlap=50)
-    splits = text_splitter.split_documents(pages)
-
-    return splits
-
-
-splits = load_pdf()
-vectorstore = Chroma.from_documents(
-    documents=splits, embedding=OpenAIEmbeddings(openai_api_key=OPENAI_KEY))
 retriever = vectorstore.as_retriever()
 
 
@@ -57,7 +46,7 @@ def respond_to_query(query):
 
 
 def voice_to_text():
-    client = OpenAI(api_key=OPENAI_KEY)
+    client = OpenAI()
 
     audio_file = open("output.wav", "rb")
     transcription = client.audio.transcriptions.create(
@@ -93,8 +82,7 @@ Always respond in Korean.
 rag_prompt_custom = PromptTemplate.from_template(template)
 
 # GPT-3.5 turbo를 이용해서 LLM 설정
-llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0,
-                 openai_api_key=OPENAI_KEY)
+llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
 
 # RAG chain 설정
 
@@ -107,7 +95,7 @@ def rag_chain(query):
 
     # 응급처치 관련 질문이라면 기존 RAG chain을 통해 응답
     relevant_docs = retriever.get_relevant_documents(
-        query)  # retriever에서 관련 문서들을 가져옴
+        query, k=3)  # retriever에서 관련 문서들을 가져옴
     context = "\n".join([doc.page_content for doc in relevant_docs])
     prompt = rag_prompt_custom.format(context=context, question=query)
 
@@ -140,7 +128,7 @@ def record_audio(output_filename, record_seconds=5, sample_rate=44100, chunk_siz
     stream.close()
     audio.terminate()
 
-    client = OpenAI(api_key=OPENAI_KEY)
+    client = OpenAI()
 
     with wave.open(output_filename, 'wb') as wf:
         wf.setnchannels(channels)
@@ -160,12 +148,15 @@ def record_audio(output_filename, record_seconds=5, sample_rate=44100, chunk_siz
 
 def print_msg(prompt):
 # 사용자 메시지 추가
+    for chat in st.session_state.chat_history:
+        with st.chat_message("user" if chat["role"] == "user" else "ai"):
+            st.markdown(chat["content"])
+
     st.session_state.chat_history.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
     res = rag_chain(prompt)
     st.session_state.chat_history.append({"role": "ai", "content": res})
-
 
     # AI 응답을 스트리밍 방식으로 표시
     # 최종 AI 응답 표시
@@ -176,6 +167,18 @@ def print_msg(prompt):
             response_text += chunk
             response_placeholder.markdown(response_text)
             time.sleep(0.01)  # 스트리밍 효과를 위해 잠시 대기
+
+
+def streaming_md():
+    for chat in st.session_state.chat_history:
+        with st.chat_message("user" if chat["role"] == "user" else "ai"):
+            response_placeholder = st.empty()
+            response_text = ""
+            for chunk in chat["content"]:
+                response_text += chunk
+                response_placeholder.markdown(response_text)
+                time.sleep(0.01)
+
 
 # 채팅 기록 초기화 (텍스트, 오디오 나눔)
 if "chat_history" not in st.session_state:
@@ -218,8 +221,6 @@ with st.sidebar:
 # Text 입력 발생시 로그 출력
 prompt = st.chat_input("증상에 대해 알려주세요..")
 if btn:
-    for chat in st.session_state.chat_history:
-        with st.chat_message("user" if chat["role"] == "user" else "ai"):
-            st.markdown(chat["content"])
+    streaming_md()
 elif prompt:
     print_msg(prompt)
