@@ -11,15 +11,15 @@
 
 ## 구현을 위한 환경 세팅
 python은 3.10 버전으로 가상환경을 구축였으며 다음은 사용한 모듈을 설치하는 코드이다.
-'''python
+```python
 !pip install chromadb openai langchain
 !pip install langchainhub tiktoken langchain-community
 !pip install pyaudio pypdf wave
 !pip install streamlit
-'''
-'''python
+```
+```python
 streamlit run app.py
-'''
+```
 app.py가 있는 디렉토리로 변경하여 위 코드를 통해 실행시키면 된다.
 
 ## 기술스택
