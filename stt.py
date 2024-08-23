@@ -54,12 +54,3 @@ def audio_btn(retriever, rag_prompt_custom, llm):
         input_audio = False
 
     return input_audio
-
-def voice_to_text():
-    client = OpenAI()
-    audio_file = open("output.wav", "rb")
-    transcription = client.audio.transcriptions.create(
-        model="whisper-1",
-        file=audio_file
-    )
-    return transcription.text
