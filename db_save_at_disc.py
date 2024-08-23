@@ -9,7 +9,9 @@ loader = PyPDFLoader("data/safekorea_crawling_result.pdf")
 pages = loader.load_and_split()
 loader = PyPDFLoader("data/응급상황및손상.pdf")
 pages2 = loader.load_and_split()
-pages = pages + pages2
+loader = PyPDFLoader("data/20230721 계곡·해수욕장 등에서의 안전사고 예방·대처요령_교육책자(최종).pdf")
+pages3 = loader.load_and_split()
+pages = pages + pages2 + pages3
 pages = loader.load_and_split()
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=500, chunk_overlap=50)
