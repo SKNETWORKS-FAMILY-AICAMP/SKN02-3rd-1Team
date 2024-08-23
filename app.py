@@ -12,7 +12,6 @@ import wave
 from openai import OpenAI
 
 
-OPENAI_KEY = "sk-proj-BZa4CDzSmp1J5qmRwrW9T3BlbkFJlboIDO84o5eKfF6HUNVz"
 
 
 @st.cache_data
@@ -128,14 +127,14 @@ def record_audio(output_filename, record_seconds=5, sample_rate=44100, chunk_siz
                         input=True,
                         frames_per_buffer=chunk_size)
 
-    st.write("Recording...")
+    st.write("목소리를 듣고 있어요.")
 
     frames = []
     for _ in range(0, int(sample_rate / chunk_size * record_seconds)):
         data = stream.read(chunk_size)
         frames.append(data)
 
-    st.write("Recording finished.")
+    st.write("다 들었어요. 잠시만 기다려주세요.")
 
     stream.stop_stream()
     stream.close()
@@ -159,21 +158,14 @@ def record_audio(output_filename, record_seconds=5, sample_rate=44100, chunk_siz
 
     return prompt
 
-def print_msg(prompt,state):    # state 0 : Text, state 1 : Audio
+def print_msg(prompt):
 # 사용자 메시지 추가
-    if(state==0):
-        st.session_state.chat_history.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
-        res = rag_chain(prompt)
-        st.session_state.chat_history.append({"role": "ai", "content": res})
+    st.session_state.chat_history.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.markdown(prompt)
+    res = rag_chain(prompt)
+    st.session_state.chat_history.append({"role": "ai", "content": res})
 
-    elif(state==1):
-        st.session_state.audio_history.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
-        res = rag_chain(prompt)
-        st.session_state.audio_history.append({"role": "ai", "content": res})
 
     # AI 응답을 스트리밍 방식으로 표시
     # 최종 AI 응답 표시
@@ -193,31 +185,41 @@ if "audio_history" not in st.session_state:
 
 
 # Streamlit 애플리케이션 설정
-icon,title = st.columns([1,6])
-with icon:
-    st.image("./img/red_corss.png")
-with title:
-    st.title("응급처치 가이드 챗봇")
+st.image("./img/emergency.jpg",width=300)
+st.title("응급처치 가이드 챗봇")
+# icon,title = st.columns([1,6])
+# with icon:
+#     st.image("./img/red_corss.png")
+# with title:
+#     st.title("응급처치 가이드 챗봇")
+
+def audio_btn():
+    if st.button("REC", type="primary"):
+        prompt = record_audio("output.wav", record_seconds=5)
+        input_audio = True
+        st.session_state.chat_history.append({"role": "user", "content": prompt})
+        res = rag_chain(prompt)
+        st.session_state.chat_history.append({"role": "ai", "content": res})
+    else:
+        input_audio = False
+
+    return input_audio
+
+global btn
 
 with st.sidebar:
     st.header('음성 도움 챗봇')
     st.markdown('''
     :red[채팅] 이 어려우시다면 아래 :red-background[REC]
     버튼을 눌러 말씀해주세요.''')
-    # 음성 녹음 버튼 추가
-    if st.button("REC", type="primary"):
-        prompt_aud = record_audio("output.wav", record_seconds=5)
-        
-        for chat in st.session_state.audio_history:
-            with st.chat_message("user" if chat["role"] == "user" else "ai"):
-                st.markdown(chat["content"])
-
-        print_msg(prompt_aud,1)
+    btn = audio_btn()
 
 
 # Text 입력 발생시 로그 출력
-if prompt := st.chat_input("증상에 대해 알려주세요.."):
+prompt = st.chat_input("증상에 대해 알려주세요..")
+if btn:
     for chat in st.session_state.chat_history:
         with st.chat_message("user" if chat["role"] == "user" else "ai"):
             st.markdown(chat["content"])
-    print_msg(prompt,0)
+elif prompt:
+    print_msg(prompt)
