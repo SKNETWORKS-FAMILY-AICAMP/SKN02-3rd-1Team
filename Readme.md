@@ -3,8 +3,8 @@
 
 ## 팀원 소개
 |강민호|김서연|김진유|박경희|
-|---|---|---|---|
-|<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/hug_me.jpg">|<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/chunsik.jpg">|<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/kirby.jpg">|<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/ogu.png">|
+|:---:|:---:|:---:|:---:|
+|<img width='100' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/hug_me.jpg">|<img width='100' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/chunsik.jpg">|<img width='100' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/kirby.jpg">|<img width='100' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/ogu.png">|
 |**팀장**</br>데이터 전처리</br>랭체인</br>웹 구현|데이터 수집</br>데이터 전처리</br>테스트|데이터 전처리</br>랭체인</br>웹 구현|웹 디자인</br>문서화</br>웹구현|
 
 </br></br>
