@@ -84,4 +84,4 @@ streamlit.chat_input() 함수를 사용하여 챗봇 환경을 구축하였다. 
 
 
 ## 3. 프로젝트 결과 </br>
-<img width='500' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/run.png">
+<img width='2000' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/run.png">
