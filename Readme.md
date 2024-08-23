@@ -1,5 +1,7 @@
 # GPT 활용 응급처치 챗봇
 
+<a href="https://fragrant-paprika-e91.notion.site/gpt-8aa9494a44724d40bded8185869bc5ff">노션페이지</a>
+
 ## 팀원 소개
 |강민호|김서연|김진유|박경희|
 |---|---|---|---|
@@ -9,7 +11,7 @@
 
 
 ## 기술스택
-|<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/chat_gpt.png"> </br> Chat GPT|<img width='120' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/lang_chain.png"> </br> |<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/python.png"> </br> Python | <img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/streamlit_hero.png"> </br> Streamlit|
+|<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/chat_gpt.png"> </br> GPT|<img width='120' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/lang_chain.png"> </br> |<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/python.png"> </br> Python | <img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/streamlit_hero.png"> </br> Streamlit|
 |-|-|-|-|
 |AI 챗봇 제작을 위하여</br>OpanAI GPT API 사용|LLM을 활용한 어플리케이션</br>개발을 단순화할 수 있도록 하는</br>프레임워크|데이터 전처리 및 LLM,</br> 스트림릿 등 AI 챗봇 제작을 </br> 위한 사용 언어|웹 구현을 위해 사용|
 
@@ -17,8 +19,8 @@
 
 ## 1. 선정 배경
 일상 속 응급처치가 필요한 상황이지만 방법을 몰라 당황한 적이 한 번 쯤 있을 것이다. 혹은 안다고 하더라도 이게 정말 올바른 방법인지 확신을 갖는 사람은 많지 않다.</br>
-전공의 파업으로 인하여 병원 인력이 부족한 실정이다. 응급실에 방문하는 환자의 44% 가량이 경증환자로 반드시 응급실에 방문할 필요가 없다. </br>응급실에 방문하기 전 개인이 응급처치를 하다 잘못된 처치로 오히려 상황을 더 악화시키는 경우도 있다. </br>
-응급처치에 대한 정보를 쉽게 알 수 있도록 gpt 모델에 119응급처치 방법을 Lang-Chain과 연동한 응급 AI 챗봇을 만들어 각 상황에 대한 올바른 응급처치 방법, 응급실 방문 필수여부 등을 가려내고자 한다.
+최근 전공의 파업으로 인하여 병원 인력이 부족한 실정이다. 응급실에 방문하는 환자의 44% 가량이 경증환자로 반드시 응급실에 방문할 필요가 없다. </br>응급실에 방문하기 전 개인이 잘못된 방법으로 응급처치를 하다 오히려 상황을 더 악화시키는 경우도 있다. </br>
+누구나 응급처치에 대한 정보를 쉽게 알 수 있도록 gpt 모델에 119응급처치 방법을 Lang-Chain과 연동한 응급처치 가이드 AI 챗봇을 만들어 각 상황에 대한 올바른 응급처치 방법, 응급실 방문 필수여부 등을 가려내고자 한다.
  
 </br></br>
 
