@@ -20,6 +20,11 @@ python은 3.10 버전으로 가상환경을 구축였으며 다음은 사용한 
 ```python
 streamlit run app.py
 ```
+</br>
+.env 파일 생성후 OPENAI_API_KEY= API_KEY </br>
+DB_PATH = "./chroma_db" </br>
+를 설정한 후
+</br>
 app.py가 있는 디렉토리로 변경하여 위 코드를 통해 실행시키면 된다.
 </br>
 ## 기술스택
