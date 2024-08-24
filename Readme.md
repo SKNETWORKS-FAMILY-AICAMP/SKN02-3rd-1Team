@@ -27,6 +27,7 @@ DB_PATH = "./chroma_db" </br>
 </br>
 app.py가 있는 디렉토리로 변경하여 위 코드를 통해 실행시키면 된다.
 </br>
+
 ## 기술스택
 |<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/chat_gpt.png"> </br> GPT|<img width='120' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/lang_chain.png"> </br> |<img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/python.png"> </br> Python | <img width='50' src="https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN02-3rd-1Team/blob/main/img/streamlit_hero.png"> </br> Streamlit|
 |-|-|-|-|
